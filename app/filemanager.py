@@ -23,14 +23,14 @@ class FileManager:
             return file.write(contents)
 
     @staticmethod
-    def delete(path) -> bool:
-        path = FileManager.buildPath(path)
+    def delete(path):
+        if not FileManager.exists(path):
+            raise FileNotFoundError
 
-        if os.path.exists(path):
-            os.remove(path)
-            return True
+        os.remove(FileManager.buildPath(path))
 
-        return False
+    def exists(path) -> bool:
+        return os.path.exists(FileManager.buildPath(path))
 
     @staticmethod
     def buildPath(path: str):
