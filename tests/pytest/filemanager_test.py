@@ -1,5 +1,4 @@
 from app.filemanager import FileManager
-from app.logger import Logger
 from time import time
 import pytest
 import os
